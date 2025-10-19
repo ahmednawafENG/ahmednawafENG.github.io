@@ -1,11 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Unizone – Question Bank</title>
-  
+<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8' /><meta name='viewport' content='width=device-width, initial-scale=1' /><title>Unizone – Question Bank</title>
   <link rel="icon" href="assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,7 +17,7 @@
     nav a{padding:10px 12px;border-radius:12px;font-weight:600}
     nav a:hover{background:#eef6ff}
     .actions{display:flex;gap:10px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:14px;font-weight:800;border:1px solid #e5e7eb;background:#fff}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:14px;font-weight:800;border:1px solid #e5e7eb;background:#fff;cursor:pointer}
     .btn-primary{background:linear-gradient(180deg,var(--blue),#438ec0);color:#fff;border:0}
     .wrap{max-width:1100px;margin:0 auto;padding:22px 0}
     .grid{display:grid;gap:16px}
@@ -38,12 +31,11 @@
     .meta{font-size:12px;opacity:.85}
     @media (max-width:900px){.tiles{grid-template-columns:1fr}}
     .panel{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:16px}
+    .subtle{color:#6b7280}
+    .topic{display:flex;align-items:center;justify-content:space-between;border:1px solid #e5e7eb;border-radius:12px;padding:12px 14px;margin:8px 0;background:#fff}
+    .q{margin:8px 0;padding:10px 12px;border-radius:10px;background:#f9fafb;border:1px solid #eef2f7}
   </style>
-
-  <script src="assets/data.js"></script>
-</head>
-<body>
-  
+<script src='assets/data.js'></script></head><body>
   <header>
     <div class="container nav">
       <div class="brand">
@@ -65,20 +57,4 @@
       </div>
     </div>
   </header>
-
-  <main class="wrap container">
-    <h1 style="margin:0 0 12px">Question Bank</h1>
-    <div id="tiles" class="grid tiles"></div>
-  </main>
-  <script>
-    const box = document.getElementById('tiles');
-    const list = (window.UNIZONE && window.UNIZONE.subjects) || [];
-    box.innerHTML = list.map(s => `
-      <a class="tile" href="exams.html#${s.id}">
-        <span class="badge">${s.stage} • ${s.major}</span>
-        <strong>${s.name}</strong>
-        <span class="meta">${s.topics.length} topics</span>
-      </a>`).join('');
-  </script>
-</body>
-</html>
+<main class='wrap container'><h1 style='margin:0 0 12px'>Question Bank</h1><div id='tiles' class='grid tiles' style='margin-bottom:16px'></div><div id='details' class='panel' style='display:none'><div id='head'></div><div id='topics'></div><div id='preview' style='margin-top:12px'></div></div></main><script>const data=window.UNIZONE||{subjects:[],bank:{}};const tiles=document.getElementById('tiles');tiles.innerHTML=data.subjects.map(s=>`<a class='tile' href='#${s.id}' onclick="pick('${s.id}');return false;"><span class='badge'>${s.stage} • ${s.major}</span><strong>${s.name}</strong><span class='meta'>${s.topics.length} topics</span></a>`).join('');const details=document.getElementById('details');const head=document.getElementById('head');const topics=document.getElementById('topics');const preview=document.getElementById('preview');function pick(id){const s=data.subjects.find(x=>x.id===id);if(!s)return;window.location.hash=id;details.style.display='block';head.innerHTML=`<h2 style='margin:0 0 6px'>${s.name}</h2><div class='subtle'>${s.stage} • ${s.major}</div>`;topics.innerHTML=s.topics.map(t=>`<div class='topic'><div><strong>${t}</strong></div><div style='display:flex;gap:8px'><button class='btn' onclick="showQuestions('${s.id}','${t}')">Show Questions</button><a class='btn btn-primary' href='exams.html#${s.id}' onclick="localStorage.setItem('unizoneTopic','${t}')">Start Exam</a></div></div>`).join('');preview.innerHTML='';window.scrollTo({top:details.offsetTop-10,behavior:'smooth'});}function showQuestions(subId,tkey){const pool=(((data.bank||{})[subId]||{})[tkey]||[]);if(!pool.length){preview.innerHTML='<div class="subtle">No questions yet for this topic.</div>';return;}const sample=pool.slice(0,Math.min(5,pool.length));preview.innerHTML=`<h3 style='margin:10px 0 6px'>Sample Questions – ${tkey}</h3>${sample.map((q,i)=>`<div class='q'><strong>Q${i+1}.</strong> ${q.q}</div>`).join('')}<div class='subtle' style='margin-top:8px'>Start Exam لعرض أسئلة كاملة بشكل تفاعلي.</div>`;}if(location.hash){const k=location.hash.replace('#','');if(data.subjects.some(s=>s.id===k))pick(k);}</script></body></html>

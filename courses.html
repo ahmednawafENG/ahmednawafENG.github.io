@@ -1,11 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Unizone – Courses</title>
-  
+<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8' /><meta name='viewport' content='width=device-width, initial-scale=1' /><title>Unizone – Courses</title>
   <link rel="icon" href="assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,7 +17,7 @@
     nav a{padding:10px 12px;border-radius:12px;font-weight:600}
     nav a:hover{background:#eef6ff}
     .actions{display:flex;gap:10px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:14px;font-weight:800;border:1px solid #e5e7eb;background:#fff}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:14px;font-weight:800;border:1px solid #e5e7eb;background:#fff;cursor:pointer}
     .btn-primary{background:linear-gradient(180deg,var(--blue),#438ec0);color:#fff;border:0}
     .wrap{max-width:1100px;margin:0 auto;padding:22px 0}
     .grid{display:grid;gap:16px}
@@ -38,12 +31,11 @@
     .meta{font-size:12px;opacity:.85}
     @media (max-width:900px){.tiles{grid-template-columns:1fr}}
     .panel{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:16px}
+    .subtle{color:#6b7280}
+    .topic{display:flex;align-items:center;justify-content:space-between;border:1px solid #e5e7eb;border-radius:12px;padding:12px 14px;margin:8px 0;background:#fff}
+    .q{margin:8px 0;padding:10px 12px;border-radius:10px;background:#f9fafb;border:1px solid #eef2f7}
   </style>
-
-  <script src="assets/data.js"></script>
-</head>
-<body>
-  
+<script src='assets/data.js'></script></head><body>
   <header>
     <div class="container nav">
       <div class="brand">
@@ -65,20 +57,4 @@
       </div>
     </div>
   </header>
-
-  <main class="wrap container">
-    <h1 style="margin:0 0 12px">Courses</h1>
-    <div id="tiles" class="grid tiles"></div>
-  </main>
-  <script>
-    const box = document.getElementById('tiles');
-    const list = (window.UNIZONE && window.UNIZONE.subjects) || [];
-    box.innerHTML = list.map(s => `
-      <a class="tile" href="exams.html#${s.id}">
-        <span class="badge">${s.stage} • ${s.major}</span>
-        <strong>${s.name}</strong>
-        <span class="meta">Topics: ${s.topics.join(', ')}</span>
-      </a>`).join('');
-  </script>
-</body>
-</html>
+<main class='wrap container'><h1 style='margin:0 0 12px'>Courses</h1><div id='tiles' class='grid tiles'></div></main><script>const d=window.UNIZONE||{subjects:[]};const box=document.getElementById('tiles');box.innerHTML=d.subjects.map(s=>`<a class='tile' href='bank.html#${s.id}'><span class='badge'>${s.stage} • ${s.major}</span><strong>${s.name}</strong><span class='meta'>Topics: ${s.topics.join(', ')}</span></a>`).join('');</script></body></html>
