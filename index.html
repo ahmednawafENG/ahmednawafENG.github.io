@@ -1,0 +1,131 @@
+<!-- Unizone static demo. Replace links with real pages or backend later. -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unizone – Your Smart Study Zone</title>
+  <meta name="description" content="Unizone is a student-friendly hub for courses, question banks, and smart online exams." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--blue:#4EA8DE;--purple:#9D4EDD;--teal:#4CC9F0;--ink:#2B2D42;--bg:#FFFFFF;--muted:#6b7280;--card:#f7f8fb;--shadow:0 10px 25px rgba(0,0,0,.07);--radius:18px}
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;color:var(--ink);background:linear-gradient(180deg,#f7fbff 0%, #ffffff 100%)}
+    a{color:inherit;text-decoration:none}
+    .container{width:100%;max-width:1180px;margin-inline:auto;padding:0 20px}
+    header{position:sticky;top:0;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid #eef2f7;z-index:50}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background: radial-gradient(120% 120% at 20% 10%, var(--purple) 0%, #7b2cbf 48%, #5a189a 100%);box-shadow:0 6px 20px rgba(157,78,221,.35)}
+    .brand-name{font-weight:800;letter-spacing:.2px}
+    .brand small{display:block;font-weight:600;font-size:11px;color:var(--muted);margin-top:-2px}
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    nav a{padding:10px 12px;border-radius:12px;color:#0f172a;font-weight:600}
+    nav a:hover{background:#eef6ff}
+    .actions{display:flex;gap:10px;align-items:center}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:14px;font-weight:700;transition:.2s ease;border:1px solid transparent}
+    .btn-primary{background:linear-gradient(180deg,var(--blue),#438ec0);color:#fff;box-shadow:0 12px 20px rgba(78,168,222,.35)}
+    .btn-primary:hover{transform:translateY(-1px)}
+    .btn-ghost{background:#fff;border-color:#e5e7eb}
+    .hero{position:relative;overflow:hidden}
+    .hero .inner{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;padding:48px 0}
+    .badge{display:inline-flex;gap:8px;align-items:center;background:#EEF2FF;color:#4338CA;font-weight:700;padding:8px 12px;border-radius:999px;font-size:12px;margin-bottom:14px}
+    h1{font-size:clamp(32px,5vw,48px);line-height:1.08;margin:0 0 10px 0}
+    .lead{font-size:clamp(16px,2.6vw,18px);color:#404756;margin:0 0 24px 0}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-card{background:conic-gradient(from 180deg at 50% 50%, #eaf5ff, #f5efff, #eaf5ff);padding:28px;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid #e8edf8}
+    .illus{aspect-ratio:4/3;border-radius:20px;background:radial-gradient(100% 100% at 0% 0%, #dff3ff 0, #edf2ff 50%, #ffffff 100%);position:relative;border:1px solid #eaf1fc;box-shadow:var(--shadow)}
+    .circle{position:absolute;border-radius:999px;filter:blur(6px);opacity:.7}
+    .c1{width:140px;height:140px;background:var(--purple);top:16%;left:12%}
+    .c2{width:120px;height:120px;background:var(--teal);bottom:12%;right:18%}
+    .c3{width:90px;height:90px;background:var(--blue);bottom:14%;left:30%}
+    section{padding:24px 0 8px}
+    .section-title{font-size:26px;margin:0 0 18px 0}
+    .grid{display:grid;gap:16px}
+    .cards{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .card{background:var(--card);border:1px solid #e8edf8;border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+    .card h3{margin:8px 0 6px;font-size:18px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+    .split{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .courses{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .course{background:#fff;border:1px solid #e8edf8;border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+    .chip{display:inline-flex;align-items:center;gap:8px;background:#eff6ff;color:#1d4ed8;padding:6px 10px;border-radius:999px;font-weight:600;font-size:12px}
+    .band{background:linear-gradient(90deg,#eef7ff, #f7efff);border:1px solid #e8edf8;border-radius:18px;padding:22px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+    footer{margin-top:36px;padding:28px 0;background:#0f172a;color:#e5e7eb}
+    footer .grid{grid-template-columns:2fr 1fr 1fr}
+    footer a{color:#cbd5e1}
+    footer a:hover{color:#fff}
+    @media (max-width: 980px){.hero .inner{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}.courses{grid-template-columns:repeat(2,1fr)}footer .grid{grid-template-columns:1fr 1fr}}
+    @media (max-width: 680px){nav ul{display:none}.cards{grid-template-columns:1fr}.courses{grid-template-columns:1fr}footer .grid{grid-template-columns:1fr}.band{flex-direction:column;align-items:flex-start}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <span class="logo" aria-hidden="true"></span>
+        <div class="brand-name">Unizone<small>Your Smart Study Zone</small></div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="bank.html">Question Bank</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </nav>
+      <div class="actions">
+        <a class="btn btn-ghost" href="login.html">Login</a>
+        <a class="btn btn-primary" href="login.html">Sign Up</a>
+        <a class="btn btn-ghost" href="index-ar.html" title="Arabic version">العربية</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="home" class="hero">
+    <div class="container inner">
+      <div>
+        <span class="badge">🎓 Student First • Free to Start</span>
+        <h1>Unizone<br><span style="background:linear-gradient(90deg,var(--purple),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent">Your Smart Study Zone</span></h1>
+        <p class="lead">Courses, question banks, and smart online exams — all in one clean, fast hub designed for students.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="login.html">Get Started</a>
+          <a class="btn btn-ghost" href="courses.html">Explore Courses</a>
+        </div>
+        <div class="hero-card" style="margin-top:16px">
+          ✅ Open section for everyone • 🔐 Private section after login • 📱 Fully responsive
+        </div>
+      </div>
+      <div class="illus" aria-hidden="true">
+        <span class="circle c1"></span>
+        <span class="circle c2"></span>
+        <span class="circle c3"></span>
+      </div>
+    </div>
+  </main>
+
+  <section aria-labelledby="why">
+    <div class="container">
+      <h2 id="why" class="section-title">Why Unizone?</h2>
+      <div class="grid cards">
+        <div class="card"><div class="icon">📚</div><h3>Multiple University Subjects</h3><p>Organized courses with notes, PDFs, and videos.</p></div>
+        <div class="card"><div class="icon">❓</div><h3>Question Bank</h3><p>Past papers and model answers in one place.</p></div>
+        <div class="card"><div class="icon">📝</div><h3>Smart Online Tests</h3><p>Practice by topic and get instant scores.</p></div>
+        <div class="card"><div class="icon">💾</div><h3>Downloadable Resources</h3><p>PDFs, slides, and summaries ready to use.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="grid">
+        <div><div style="display:flex;gap:12px;align-items:center;margin-bottom:8px"><span class="logo" aria-hidden="true"></span><strong>Unizone</strong></div><p style="margin:0;color:#cbd5e1">© 2025 Unizone — All Rights Reserved</p></div>
+        <div><strong style="display:block;margin-bottom:8px">Quick Links</strong><a href="courses.html">Courses</a><br><a href="bank.html">Question Bank</a><br><a href="login.html">Login / Sign Up</a></div>
+        <div><strong style="display:block;margin-bottom:8px">Follow</strong><a href="#">Instagram</a><br><a href="#">Telegram</a><br><a href="#">Email</a></div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

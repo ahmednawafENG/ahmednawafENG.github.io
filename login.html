@@ -1,0 +1,95 @@
+<!-- Unizone static demo. Replace links with real pages or backend later. -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unizone – Login / Sign Up</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--blue:#4EA8DE;--purple:#9D4EDD;--ink:#1f2937;--muted:#6b7280;--bg:#f7fbff}
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,#f7fbff,#ffffff)}
+    .wrap{min-height:100vh;display:grid;place-items:center;padding:20px}
+    .card{width:100%;max-width:780px;background:#fff;border:1px solid #e8edf8;border-radius:18px;box-shadow:0 10px 25px rgba(0,0,0,.07);overflow:hidden}
+    .top{padding:22px 22px 0;display:flex;justify-content:space-between;align-items:center}
+    .brand{display:flex;gap:10px;align-items:center}
+    .logo{width:36px;height:36px;border-radius:10px;background: radial-gradient(120% 120% at 20% 10%, var(--purple) 0%, #7b2cbf 48%, #5a189a 100%)}
+    .tabs{display:flex;margin:12px}
+    .tab{flex:1;text-align:center;padding:12px;border-bottom:3px solid transparent;font-weight:800;cursor:pointer}
+    .tab.active{border-color:var(--blue);color:#0f172a}
+    .grid{display:grid;grid-template-columns:1fr 1fr}
+    form{padding:22px}
+    label{display:block;font-weight:700;margin:12px 0 6px}
+    input{width:100%;padding:12px 14px;border:1px solid #e5e7eb;border-radius:12px;font-size:15px}
+    .row{display:flex;gap:10px}
+    .btn{margin-top:14px;display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:14px;font-weight:800;color:#fff;background:linear-gradient(180deg,var(--blue),#438ec0);border:0;width:100%}
+    .muted{color:var(--muted);font-size:13px}
+    .side{background:linear-gradient(180deg,#eef7ff,#f5efff);padding:22px}
+    .side h3{margin-top:0}
+    @media (max-width:820px){.grid{grid-template-columns:1fr}.side{order:-1;border-bottom:1px solid #e8edf8}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="top">
+        <div class="brand"><div class="logo"></div><strong>Unizone</strong></div>
+        <a href="index.html" style="text-decoration:none;color:#2563eb;font-weight:800">← Back to Home</a>
+      </div>
+      <div class="tabs">
+        <div class="tab active" onclick="showTab('login')">Login</div>
+        <div class="tab" onclick="showTab('signup')">Sign Up</div>
+      </div>
+      <div class="grid">
+        <form id="login" onsubmit="return handleLogin(event)">
+          <label>Email</label>
+          <input type="email" id="loginEmail" required placeholder="you@example.com" />
+          <label>Password</label>
+          <input type="password" id="loginPass" minlength="6" required placeholder="••••••" />
+          <button class="btn" type="submit">Login</button>
+          <p class="muted">By logging in you accept our terms.</p>
+        </form>
+        <form id="signup" style="display:none" onsubmit="return handleSignup(event)">
+          <div class="row">
+            <div style="flex:1">
+              <label>First name</label>
+              <input type="text" id="fn" required />
+            </div>
+            <div style="flex:1">
+              <label>Last name</label>
+              <input type="text" id="ln" required />
+            </div>
+          </div>
+          <label>Email</label>
+          <input type="email" id="em" required placeholder="you@example.com" />
+          <label>Password</label>
+          <input type="password" id="pw" minlength="6" required placeholder="At least 6 characters" />
+          <button class="btn" type="submit">Create free account</button>
+          <p class="muted">No payment needed. You can add it later.</p>
+        </form>
+        <div class="side">
+          <h3>Why join Unizone?</h3>
+          <ul>
+            <li>Access full question banks</li>
+            <li>Take smart exams with instant scores</li>
+            <li>Track your progress by subject</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function showTab(id){
+      document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+      document.querySelectorAll('form').forEach(f=>f.style.display='none');
+      document.querySelector(`[onclick="showTab('${id}')"]`).classList.add('active');
+      document.getElementById(id).style.display='block';
+    }
+    function handleLogin(e){e.preventDefault();alert('Demo login: static site. Connect to Firebase/Backend later.');return false}
+    function handleSignup(e){e.preventDefault();alert('Demo signup: connect to Firebase Auth later.');return false}
+  </script>
+</body>
+</html>

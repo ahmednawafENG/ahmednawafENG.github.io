@@ -1,0 +1,40 @@
+<!-- Unizone static demo. Replace links with real pages or backend later. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unizone – Courses</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--blue:#4EA8DE;--purple:#9D4EDD;--ink:#1f2937;--muted:#6b7280;--card:#f7f8fb}
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial}
+    header{padding:16px;border-bottom:1px solid #e5e7eb;display:flex;justify-content:space-between;align-items:center}
+    a{text-decoration:none;color:#0f172a} .btn{padding:8px 12px;border:1px solid #e5e7eb;border-radius:12px}
+    .container{max-width:1080px;margin:0 auto;padding:18px}
+    .grid{display:grid;gap:14px;grid-template-columns:repeat(3, minmax(0,1fr))}
+    .card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:16px}
+    .chip{display:inline-flex;gap:8px;background:#eef6ff;color:#1d4ed8;padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px}
+    @media (max-width:800px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <strong>Unizone – Courses</strong>
+    <nav>
+      <a class="btn" href="index.html">Home</a>
+      <a class="btn" href="bank.html">Question Bank</a>
+      <a class="btn" href="login.html">Login</a>
+    </nav>
+  </header>
+  <div class="container">
+    <div class="grid">
+      <div class="card"><span class="chip">Anatomy</span><h3>Human Anatomy</h3><p>Notes, diagrams, topic quizzes.</p></div>
+      <div class="card"><span class="chip">Biochemistry</span><h3>Biochemistry Essentials</h3><p>Metabolism, enzymes, MCQs.</p></div>
+      <div class="card"><span class="chip">PR & Media</span><h3>PR & Media Methods</h3><p>Campaign design, research methods.</p></div>
+    </div>
+  </div>
+</body>
+</html>
