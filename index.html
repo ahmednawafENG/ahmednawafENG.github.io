@@ -9,30 +9,29 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{--blue:#4EA8DE;--purple:#9D4EDD;--teal:#4CC9F0;--ink:#2B2D42;--bg:#FFFFFF;--muted:#6b7280;--card:#f7f8fb;--shadow:0 10px 25px rgba(0,0,0,.07);--radius:18px}
+    :root{--blue:#4EA8DE;--purple:#9D4EDD;--ink:#0f172a;--muted:#404756;--card:#f6f7fb}
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;color:var(--ink);background:linear-gradient(180deg,#f7fbff 0%, #ffffff 100%)}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,Helvetica;background:linear-gradient(180deg,#f7fbff, #ffffff);color:var(--ink)}
     a{color:inherit;text-decoration:none}
-    .container{width:100%;max-width:1180px;margin-inline:auto;padding:0 20px}
-    header{position:sticky;top:0;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid #eef2f7;z-index:50}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .container{max-width:1180px;margin:0 auto;padding:0 20px}
+    header{position:sticky;top:0;background:rgba(255,255,255,.9);backdrop-filter: blur(6px);border-bottom:1px solid #eef2f7;z-index:50}
+    .nav{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:14px 0}
     .brand{display:flex;gap:10px;align-items:center}
     .brand img{height:34px}
     nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
-    nav a{padding:10px 12px;border-radius:12px;color:#0f172a;font-weight:600}
+    nav a{padding:10px 12px;border-radius:12px;font-weight:600}
     nav a:hover{background:#eef6ff}
-    .actions{display:flex;gap:10px;align-items:center}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:14px;font-weight:700;transition:.2s ease;border:1px solid transparent}
-    .btn-primary{background:linear-gradient(180deg,var(--blue),#438ec0);color:#fff;box-shadow:0 12px 20px rgba(78,168,222,.35)}
-    .btn-ghost{background:#fff;border-color:#e5e7eb}
-    .hero{position:relative;overflow:hidden}
-    .inner{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;padding:48px 0}
-    .badge{display:inline-flex;gap:8px;align-items:center;background:#EEF2FF;color:#4338CA;font-weight:700;padding:8px 12px;border-radius:999px;font-size:12px;margin-bottom:14px}
-    h1{font-size:clamp(32px,5vw,48px);line-height:1.08;margin:0 0 10px 0}
-    .lead{font-size:clamp(16px,2.6vw,18px);color:#404756;margin:0 0 24px 0}
-    .cta{display:flex;gap:12px;flex-wrap:wrap}
-    .hero-card{background:conic-gradient(from 180deg at 50% 50%, #eaf5ff, #f5efff, #eaf5ff);padding:28px;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid #e8edf8}
-    .illus{aspect-ratio:4/3;border-radius:20px;background:radial-gradient(100% 100% at 0% 0%, #dff3ff 0, #edf2ff 50%, #ffffff 100%);position:relative;border:1px solid #eaf1fc;box-shadow:var(--shadow)}
+    .actions{display:flex;gap:10px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:14px;font-weight:800;border:1px solid #e5e7eb;background:#fff}
+    .btn-primary{background:linear-gradient(180deg,var(--blue),#438ec0);color:#fff;border:0}
+    .hero{padding:48px 0}
+    .badge{display:inline-flex;gap:8px;align-items:center;background:#EEF2FF;color:#4338CA;font-weight:800;padding:8px 12px;border-radius:999px;font-size:12px;margin-bottom:14px}
+    h1{font-size:clamp(32px,5vw,48px);line-height:1.08;margin:0 0 10px}
+    .lead{font-size:clamp(16px,2.6vw,18px);color:var(--muted);margin:0 0 20px}
+    .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center}
+    .panel{background:#fff;border:1px solid #e8edf8;border-radius:16px;padding:18px;box-shadow:0 10px 25px rgba(0,0,0,.06)}
+    .illus{aspect-ratio:4/3;border-radius:20px;background:radial-gradient(100% 100% at 0% 0%, #dff3ff 0, #edf2ff 50%, #ffffff 100%);border:1px solid #eaf1fc}
+    @media (max-width:980px){.grid{grid-template-columns:1fr} nav ul{display:none}}
   </style>
 </head>
 <body>
@@ -40,6 +39,9 @@
     <div class="container nav">
       <div class="brand">
         <img src="assets/logo.svg" alt="Unizone logo">
+        <div>
+          <strong>Unizone</strong><div style="font-size:12px;color:#6b7280">Your Smart Study Zone</div>
+        </div>
       </div>
       <nav>
         <ul>
@@ -50,24 +52,24 @@
         </ul>
       </nav>
       <div class="actions">
-        <a class="btn btn-ghost" href="index-ar.html">العربية</a>
-        <a class="btn btn-ghost" href="login.html">Login</a>
+        <a class="btn" href="index-ar.html">العربية</a>
+        <a class="btn" href="login.html">Login</a>
         <a class="btn btn-primary" href="login.html">Sign Up</a>
       </div>
     </div>
   </header>
 
-  <main class="hero">
-    <div class="container inner">
+  <main class="container hero">
+    <div class="grid">
       <div>
-        <span class="badge">🎓 Free to Start</span>
-        <h1>Unizone – Your Smart Study Zone</h1>
-        <p class="lead">Courses • Question Banks • Smart Exams. All in one simple hub.</p>
-        <div class="cta">
+        <div class="badge">🎓 Student First • Free to Start</div>
+        <h1>Unizone — Your Smart Study Zone</h1>
+        <p class="lead">Courses, question banks, and smart online exams — all in one clean, fast hub designed for students.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
           <a class="btn btn-primary" href="exams.html">Start an Exam</a>
-          <a class="btn btn-ghost" href="courses.html">Explore Courses</a>
+          <a class="btn" href="courses.html">Explore Courses</a>
         </div>
-        <div class="hero-card" style="margin-top:16px">✅ Open area for everyone • 🔐 Private after login • 📱 Fully responsive</div>
+        <div class="panel" style="margin-top:14px">✅ Open section for everyone • 🔐 Private section after login • 📱 Fully responsive</div>
       </div>
       <div class="illus"></div>
     </div>
