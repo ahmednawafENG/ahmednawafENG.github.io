@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unizone – Exams</title>
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--blue:#4EA8DE;--purple:#9D4EDD;--ink:#1f2937;--muted:#6b7280}
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:#f8fafc;color:var(--ink)}
+    header{padding:16px 18px;background:#fff;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;gap:12px}
+    header img{height:32px}
+    header a{margin-left:auto;text-decoration:none;color:#2563eb;font-weight:800}
+    .container{max-width:900px;margin:0 auto;padding:18px}
+    .panel{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:16px;margin-bottom:14px}
+    .row{display:flex;gap:12px;flex-wrap:wrap}
+    select{padding:10px 12px;border:1px solid #e5e7eb;border-radius:12px}
+    button{padding:10px 14px;border:0;border-radius:12px;font-weight:800;background:linear-gradient(180deg,var(--blue),#438ec0);color:#fff}
+    .q{background:#ffffff;border:1px solid #e5e7eb;border-radius:12px;padding:14px;margin:10px 0}
+    .opt{display:block;margin:8px 0;padding:10px;border:1px solid #e5e7eb;border-radius:10px;cursor:pointer}
+    .opt.correct{background:#ecfdf5;border-color:#10b981}
+    .opt.wrong{background:#fef2f2;border-color:#ef4444}
+    .score{font-weight:800}
+  </style>
+</head>
+<body>
+  <header>
+    <img src="assets/logo.svg" alt="Unizone logo">
+    <a href="index.html">← Back to Home</a>
+  </header>
+  <div class="container">
+    <div class="panel">
+      <div class="row">
+        <label>Subject:
+          <select id="subject">
+            <option value="bio">Biochemistry</option>
+            <option value="anat">Anatomy</option>
+            <option value="pr">PR & Media</option>
+          </select>
+        </label>
+        <label>Topic:
+          <select id="topic"></select>
+        </label>
+        <label>Questions:
+          <select id="count">
+            <option>3</option><option selected>5</option><option>10</option>
+          </select>
+        </label>
+        <button id="start">Start Exam</button>
+      </div>
+    </div>
+    <div id="quiz"></div>
+    <div id="result" class="panel" style="display:none"></div>
+  </div>
+
+  <script>
+  // --- Mini question bank ---
+  const bank = {
+    bio: {
+      name: "Biochemistry",
+      topics: {
+        metabolism: [
+          {q:"Which coenzyme carries electrons in the electron transport chain?", a:["FAD","FADH2","NAD+","NADH"], correct:3},
+          {q:"Glycolysis occurs in the…", a:["Mitochondria","Cytosol","Nucleus","ER"], correct:1},
+          {q:"Rate limiting enzyme of glycolysis:", a:["PFK-1","Hexokinase","Pyruvate kinase","Aldolase"], correct:0},
+          {q:"Beta-oxidation yields units of:", a:["Glucose","Acetyl‑CoA","Lactate","Alanine"], correct:1},
+          {q:"ATP synthase is found in:", a:["Outer membrane","Inner membrane","Matrix","Cytosol"], correct:1}
+        ],
+        enzymes: [
+          {q:"Km reflects:", a:["Enzyme affinity","Max velocity","Enzyme concentration","Product level"], correct:0},
+          {q:"Competitive inhibitor effect on Km:", a:["Decrease","Increase","No change","Depends"], correct:1},
+          {q:"Vmax in competitive inhibition:", a:["Decrease","Increase","No change","Depends"], correct:2},
+          {q:"Enzymes are mostly:", a:["Lipids","Proteins","Carbs","Nucleic acids"], correct:1},
+          {q:"Allosteric enzymes show:", a:["Hyperbolic curve","Sigmoidal curve","Linear curve","No curve"], correct:1}
+        ]
+      }
+    },
+    anat: {
+      name: "Anatomy",
+      topics: {
+        bones: [
+          {q:"The femur is a type of:", a:["Flat bone","Short bone","Long bone","Irregular bone"], correct:2},
+          {q:"Which joint is the knee?", a:["Hinge","Ball and socket","Pivot","Plane"], correct:0},
+          {q:"Scapula is a:", a:["Flat bone","Long bone","Sesamoid","Short bone"], correct:0},
+          {q:"Vertebrae are:", a:["Flat","Irregular","Sesamoid","Long"], correct:1},
+          {q:"Skull sutures are:", a:["Synovial","Fibrous","Cartilaginous","None"], correct:1}
+        ],
+        nerves: [
+          {q:"Cranial nerve for vision:", a:["CN II","CN III","CN IV","CN V"], correct:0},
+          {q:"Facial expression nerve:", a:["Trigeminal","Facial","Glossopharyngeal","Accessory"], correct:1},
+          {q:"Phrenic nerve roots:", a:["C2–C3","C3–C5","C5–C7","T1–T2"], correct:1},
+          {q:"Median nerve injury affects:", a:["Wrist flexion","Ankle dorsiflexion","Knee extension","Hip abduction"], correct:0},
+          {q:"Sciatic nerve is from:", a:["Cervical plexus","Lumbar plexus","Sacral plexus","Brachial plexus"], correct:2}
+        ]
+      }
+    },
+    pr: {
+      name: "PR & Media",
+      topics: {
+        research: [
+          {q:"Random sampling improves:", a:["Validity","Reliability","Generalizability","Bias"], correct:2},
+          {q:"Qualitative method:", a:["Survey","Focus group","Experiment","Structured obs"], correct:1},
+          {q:"PR campaign starts with:", a:["Tactics","Objectives","Situation analysis","Budget"], correct:2},
+          {q:"KPI example:", a:["Press release","Media impressions","Brainstorm","Raw footage"], correct:1},
+          {q:"A/B test compares:", a:["Two random variables","Two versions","Two audiences","Two tools"], correct:1}
+        ],
+        ethics: [
+          {q:"Informed consent is required for:", a:["Internal memo","Human subjects research","Press conference","Ad spend"], correct:1},
+          {q:"Conflict of interest means:", a:["Tight deadline","Personal gain risk","Bad copy","Low CTR"], correct:1},
+          {q:"Attribution gives credit to:", a:["Team morale","Sources/creators","Budget owners","Stakeholders"], correct:1},
+          {q:"Plagiarism is:", a:["Benchmarking","Copying without credit","Sponsorship","Satire"], correct:1},
+          {q:"Sensitive data should be:", a:["Shared widely","Kept minimal & secure","Posted to socials","Ignored"], correct:1}
+        ]
+      }
+    }
+  };
+
+  const subject = document.getElementById('subject');
+  const topic = document.getElementById('topic');
+  const count = document.getElementById('count');
+  const start = document.getElementById('start');
+  const quiz = document.getElementById('quiz');
+  const result = document.getElementById('result');
+
+  function loadTopics(){
+    const t = bank[subject.value].topics;
+    topic.innerHTML = Object.keys(t).map(k=>`<option value="${k}">${k}</option>`).join('');
+  }
+  subject.addEventListener('change', loadTopics);
+  loadTopics();
+
+  start.addEventListener('click', ()=>{
+    const data = bank[subject.value].topics[topic.value].slice();
+    const n = Math.min(parseInt(count.value,10), data.length);
+    // simple shuffle
+    for (let i=data.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [data[i],data[j]]=[data[j],data[i]]; }
+    const picked = data.slice(0,n);
+    quiz.innerHTML = '';
+    result.style.display = 'none';
+    let score = 0, answered = 0;
+
+    picked.forEach((item, idx)=>{
+      const q = document.createElement('div');
+      q.className = 'q';
+      q.innerHTML = `<strong>Q${idx+1}.</strong> ${item.q}`;
+      item.a.forEach((opt, i)=>{
+        const o = document.createElement('div');
+        o.className = 'opt';
+        o.textContent = opt;
+        o.addEventListener('click', ()=>{
+          if (o.classList.contains('correct') || o.classList.contains('wrong')) return;
+          if (i === item.correct){ o.classList.add('correct'); score++; }
+          else { o.classList.add('wrong'); }
+          answered++;
+          if (answered === picked.length){
+            result.style.display = 'block';
+            result.innerHTML = `<div class="score">Score: ${score} / ${picked.length}</div>`;
+          }
+        });
+        q.appendChild(o);
+      });
+      quiz.appendChild(q);
+    });
+    window.scrollTo({top: quiz.offsetTop - 20, behavior: 'smooth'});
+  });
+  </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="160" height="48" viewBox="0 0 160 48" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9D4EDD"/>
+      <stop offset="100%" stop-color="#4EA8DE"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="48" height="48" rx="12" fill="url(#g1)"/>
+  <g transform="translate(10,10)" fill="white">
+    <circle cx="14" cy="14" r="3.5" opacity="0.9"/>
+    <circle cx="28" cy="8" r="3" opacity="0.9"/>
+    <circle cx="22" cy="24" r="3" opacity="0.9"/>
+    <path d="M6 26 Q14 18 20 18 T34 10" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+  </g>
+  <text x="58" y="31" font-family="Inter,Segoe UI,Arial" font-weight="800" font-size="22" fill="#1f2937">Unizone</text>
+</svg>
