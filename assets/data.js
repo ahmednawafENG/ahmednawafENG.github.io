@@ -1,40 +1,126 @@
 
 window.UNIZONE = {
   subjects: [
-    { id: "anat", name: "Human Anatomy", stage: "Stage 2", major: "Medicine",  topics: ["bones", "nerves"] },
-    { id: "bio",  name: "Biochemistry",  stage: "Stage 1", major: "Medicine",  topics: ["metabolism", "enzymes"] },
-    { id: "pr",   name: "PR & Media",    stage: "Stage 3", major: "Mass Comm", topics: ["research", "ethics"] }
+    { id: "elec",         name: "أسس هندسة كهربائية", stage: "Stage 1", major: "هندسة تقنيات الأجهزة الطبية", topics: ["الدوائر الأساسية","المقاومات والمكثفات","قوانين كيرشوف"] },
+    { id: "comp-apps",    name: "تطبيقات الحاسوب",     stage: "Stage 1", major: "هندسة تقنيات الأجهزة الطبية", topics: ["أساسيات الحاسوب","معالجات نصوص","جداول بيانات"] },
+    { id: "programming",  name: "برمجة",               stage: "Stage 1", major: "هندسة تقنيات الأجهزة الطبية", topics: ["المتغيرات والشروط","الحلقات والدوال","الهياكل"] },
+    { id: "diff-eq",      name: "الرياضيات التفاصلية", stage: "Stage 1", major: "هندسة تقنيات الأجهزة الطبية", topics: ["معادلات من الرتبة الأولى","المعادلات الخطية","تحويل لابلاس"] },
+    { id: "eng-drawing",  name: "الرسم الهندسي",       stage: "Stage 1", major: "هندسة تقنيات الأجهزة الطبية", topics: ["الإسقاطات","المقاطع","الأبعاد والتسميات"] },
+    { id: "med-chem",     name: "الكيمياء الطبية",     stage: "Stage 1", major: "هندسة تقنيات الأجهزة الطبية", topics: ["الروابط والذوبانية","الأحماض والقواعد","الحركية"] },
+    { id: "med-phys",     name: "الفيزياء الطبية",     stage: "Stage 1", major: "هندسة تقنيات الأجهزة الطبية", topics: ["الفيزياء الحيوية","الإشعاع","التصوير الطبي"] },
+    { id: "mechanics",    name: "الميكانيك",           stage: "Stage 1", major: "هندسة تقنيات الأجهزة الطبية", topics: ["الستاتيكا","الديناميكا","خواص المواد"] }
   ],
   bank: {
-    anat: {
-      bones: [
-        {q:"The femur is a type of:", a:["Flat","Short","Long","Irregular"], correct:2},
-        {q:"Which joint is the knee?", a:["Hinge","Ball and socket","Pivot","Plane"], correct:0},
-        {q:"Scapula is a:", a:["Flat","Long","Sesamoid","Short"], correct:0}
+    "elec": {
+      "الدوائر الأساسية": [
+        {q:"الوحدة الأساسية للمقاومة هي:", a:["فولت","أوم","أمبير","واط"], correct:1},
+        {q:"الدائرة على التوالي يكون فيها:", a:["التيار متساوي","الجهد متساوي","المقاومة صفر","القدرة صفر"], correct:0}
       ],
-      nerves: [
-        {q:"Cranial nerve for vision:", a:["CN II","CN III","CN IV","CN V"], correct:0},
-        {q:"Facial expression nerve:", a:["Trigeminal","Facial","Glossopharyngeal","Accessory"], correct:1}
+      "المقاومات والمكثفات": [
+        {q:"سلوك المكثف للتيار المستمر DC هو:", a:["قصر","مفتوح","مقاومة ثابتة","ملف"], correct:1},
+        {q:"توصيل مقاومتين 2Ω و 3Ω على التوازي تعادل تقريبًا:", a:["5Ω","1.2Ω","0.6Ω","2.5Ω"], correct:1}
+      ],
+      "قوانين كيرشوف": [
+        {q:"قانون كيرشوف للتيار (KCL) يطبق على:", a:["المسارات المغلقة","العقد","المقاومات فقط","المكثفات فقط"], correct:1},
+        {q:"مجموع الفولتية حول المسار المغلق يساوي:", a:["الصفر","قيمة ثابتة","أقصى فولت","أدنى فولت"], correct:0}
       ]
     },
-    bio: {
-      metabolism: [
-        {q:"Glycolysis occurs in the…", a:["Mitochondria","Cytosol","Nucleus","ER"], correct:1},
-        {q:"Rate limiting enzyme of glycolysis:", a:["PFK-1","Hexokinase","Pyruvate kinase","Aldolase"], correct:0}
+    "comp-apps": {
+      "أساسيات الحاسوب": [
+        {q:"نظام التشغيل مثال:", a:["Word","Windows","Photoshop","Chrome"], correct:1},
+        {q:"وحدة قياس السعة:", a:["Hz","V","Byte","m"], correct:2}
       ],
-      enzymes: [
-        {q:"Km reflects:", a:["Enzyme affinity","Max velocity","Enzyme concentration","Product level"], correct:0},
-        {q:"Vmax in competitive inhibition:", a:["Decrease","Increase","No change","Depends"], correct:2}
+      "معالجات نصوص": [
+        {q:"الاختصار لحفظ ملف:", a:["Ctrl+S","Ctrl+C","Ctrl+V","Ctrl+Z"], correct:0},
+        {q:"أفضل تنسيق نصي للتقارير:", a:[".txt",".docx",".png",".mp3"], correct:1}
+      ],
+      "جداول بيانات": [
+        {q:"معادلة جمع في الخلية:", a:["=SUM(A1:A5)","SUM(A1:A5)","A1+A5","=ADD(A1:A5)"], correct:0},
+        {q:"المخططات تُنشأ من:", a:["Insert","File","Home","View"], correct:0}
       ]
     },
-    pr: {
-      research: [
-        {q:"Random sampling improves:", a:["Validity","Reliability","Generalizability","Bias"], correct:2},
-        {q:"Qualitative method:", a:["Survey","Focus group","Experiment","Structured obs"], correct:1}
+    "programming": {
+      "المتغيرات والشروط": [
+        {q:"نوع بيانات صحيح بالإنجليزية:", a:["string","int","bool","list"], correct:1},
+        {q:"المعامل للمقارنة يساوي:", a:["=","==",":=","!=="], correct:1}
       ],
-      ethics: [
-        {q:"Plagiarism is:", a:["Benchmarking","Copying without credit","Sponsorship","Satire"], correct:1},
-        {q:"Sensitive data should be:", a:["Shared widely","Kept minimal & secure","Posted to socials","Ignored"], correct:1}
+      "الحلقات والدوال": [
+        {q:"حلقة تكرر حتى شرط:", a:["for","while","switch","case"], correct:1},
+        {q:"تعريف الدالة يسمى:", a:["call","define","return","declare"], correct:3}
+      ],
+      "الهياكل": [
+        {q:"المصفوفة Array تُستخدم لـ:", a:["قيمة واحدة","قيم متعددة مرتبة","قيم عشوائية بدون ترتيب","تنفيذ أوامر"], correct:1},
+        {q:"Struct يعني:", a:["نوع مركّب","حلقة","شرط","مؤشّر"], correct:0}
+      ]
+    },
+    "diff-eq": {
+      "معادلات من الرتبة الأولى": [
+        {q:"حل dy/dx = ky هو:", a:["y=Cx","y=Ce^{kx}","y=kx^2","y=C/k"], correct:1},
+        {q:"طريقة لفصل المتغيرات:", a:["التكامل","التفاضل العددي","التحليل المركب","السلاسل"], correct:0}
+      ],
+      "المعادلات الخطية": [
+        {q:"معادلة خطية رتبة أولى:", a:["y' + p(x) y = q(x)","y y' = 0","y'' + y^2 = 0","y'=y^2"], correct:0},
+        {q:"عامل التكامل يستخدم لـ:", a:["المعادلات غير الخطية","الخطية رتبة أولى","الحدود الجزئية","لا شيء"], correct:1}
+      ],
+      "تحويل لابلاس": [
+        {q:"L{1} يساوي:", a:["0","1/s","s","∞"], correct:1},
+        {q:"L{e^{at}} هو:", a:["1/(s-a)","s/(s+a)","1/(s+a)","a/s"], correct:2}
+      ]
+    },
+    "eng-drawing": {
+      "الإسقاطات": [
+        {q:"الإسقاط المتعامد يعتمد على:", a:["منظور واحد","ثلاثة مستويات","تلوين","ظلال"], correct:1},
+        {q:"واجهة الجسم تسمى:", a:["Face","Edge","Vertex","Axis"], correct:0}
+      ],
+      "المقاطع": [
+        {q:"خط القطع يُستخدم لـ:", a:["إظهار التفاصيل الداخلية","تظليل","أبعاد","ألوان"], correct:0},
+        {q:"نمط التهشير يحدد:", a:["المادة","اللون","الإضاءة","المقياس"], correct:0}
+      ],
+      "الأبعاد والتسميات": [
+        {q:"وحدة القياس الشائعة:", a:["mm","kg","s","A"], correct:0},
+        {q:"سهم البعد يوضع على:", a:["نقطة","خط البعد","نص","بدون"], correct:1}
+      ]
+    },
+    "med-chem": {
+      "الروابط والذوبانية": [
+        {q:"الرابطة الأيونية بين:", a:["ذرتين لا فلز","فلز ولا فلز","فلزين","غازين نبيلين"], correct:1},
+        {q:"تزداد الذوبانية غالبًا مع:", a:["ارتفاع الحرارة","انخفاض الحرارة","لا تتغير","الضغط فقط"], correct:0}
+      ],
+      "الأحماض والقواعد": [
+        {q:"pH<7 يعني:", a:["قاعدي","متعادل","حامضي","مؤكسد"], correct:2},
+        {q:"حمض ضعيف مثال:", a:["HCl","HNO3","CH3COOH","H2SO4"], correct:2}
+      ],
+      "الحركية": [
+        {q:"الرتبة تُمثل:", a:["أبعاد الوعاء","تعتمد على تراكيز المتفاعلات","كتلة المادة","زمن القياس"], correct:1},
+        {q:"العامل الحفاز:", a:["يزيد Ea","يقلل Ea","يزيد ΔH","يزيد الكتلة"], correct:1}
+      ]
+    },
+    "med-phys": {
+      "الفيزياء الحيوية": [
+        {q:"الاسموزية تعتمد على:", a:["الجهد","التركيز","الكتلة","الشحنة"], correct:1},
+        {q:"الانتشار يحدث من:", a:["المنخفض للأعلى","الأعلى للأدنى","لا اتجاه","حسب الشحنة"], correct:1}
+      ],
+      "الإشعاع": [
+        {q:"وحدة الجرعة الممتصة:", a:["سيفرت","غراي","بيكريل","راد"], correct:1},
+        {q:"ألفا لها:", a:["اختراق عالٍ","اختراق ضعيف","بدون شحنة","كتلة صغيرة جدًا"], correct:1}
+      ],
+      "التصوير الطبي": [
+        {q:"MRI يعتمد على:", a:["أشعة سينية","مجالات مغناطيسية","صوت عالي","إلكترونات"], correct:1},
+        {q:"الألتراساوند يستخدم:", a:["موجات ضوئية","موجات راديو","موجات صوتية","إشعاع مؤين"], correct:2}
+      ]
+    },
+    "mechanics": {
+      "الستاتيكا": [
+        {q:"شرط الاتزان:", a:["ΣF=0 و ΣM=0","ΣF≠0","ΣM≠0","جميعها"], correct:0},
+        {q:"وحدة القوة:", a:["N","J","Pa","W"], correct:0}
+      ],
+      "الديناميكا": [
+        {q:"قانون نيوتن الثاني:", a:["F=ma","E=mc^2","V=IR","P=IV"], correct:0},
+        {q:"الطاقة الحركية:", a:["mgh","1/2 mv^2","F·d","P·t"], correct:1}
+      ],
+      "خواص المواد": [
+        {q:"الإجهاد هو:", a:["قوة/مساحة","طول/زمن","طاقة/زمن","قوة·مسافة"], correct:0},
+        {q:"معامل يونغ يقيس:", a:["اللدونة","الصلادة","المرونة","الكثافة"], correct:2}
       ]
     }
   }
