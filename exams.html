@@ -4,36 +4,84 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Unizone – Exams</title>
+  
   <link rel="icon" href="assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{--blue:#4EA8DE;--purple:#9D4EDD;--ink:#1f2937;--muted:#6b7280}
-    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:#f8fafc;color:var(--ink)}
-    header{padding:16px 18px;background:#fff;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;gap:12px}
-    header img{height:32px}
-    header a{margin-left:auto;text-decoration:none;color:#2563eb;font-weight:800}
-    .container{max-width:900px;margin:0 auto;padding:18px}
-    .panel{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:16px;margin-bottom:14px}
-    .row{display:flex;gap:12px;flex-wrap:wrap}
-    select{padding:10px 12px;border:1px solid #e5e7eb;border-radius:12px}
-    button{padding:10px 14px;border:0;border-radius:12px;font-weight:800;background:linear-gradient(180deg,var(--blue),#438ec0);color:#fff}
-    .q{background:#ffffff;border:1px solid #e5e7eb;border-radius:12px;padding:14px;margin:10px 0}
-    .opt{display:block;margin:8px 0;padding:10px;border:1px solid #e5e7eb;border-radius:10px;cursor:pointer}
-    .opt.correct{background:#ecfdf5;border-color:#10b981}
-    .opt.wrong{background:#fef2f2;border-color:#ef4444}
-    .score{font-weight:800}
+    :root{--blue:#4EA8DE;--blue2:#3b82f6;--purple:#9D4EDD;--ink:#0f172a;--muted:#404756}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:#f8fafc;color:var(--ink)}
+    a{text-decoration:none;color:inherit}
+    .container{max-width:1180px;margin:0 auto;padding:0 20px}
+    header{position:sticky;top:0;background:#fff;border-bottom:1px solid #eef2f7;z-index:50}
+    .nav{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:10px;align-items:center}
+    .brand img{height:34px}
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    nav a{padding:10px 12px;border-radius:12px;font-weight:600}
+    nav a:hover{background:#eef6ff}
+    .actions{display:flex;gap:10px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:14px;font-weight:800;border:1px solid #e5e7eb;background:#fff}
+    .btn-primary{background:linear-gradient(180deg,var(--blue),#438ec0);color:#fff;border:0}
+    .wrap{max-width:1100px;margin:0 auto;padding:22px 0}
+    .grid{display:grid;gap:16px}
+    /* Modern blue tiles */
+    .tiles{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .tile{position:relative;display:flex;align-items:flex-end;min-height:140px;padding:16px;border-radius:16px;
+          background:linear-gradient(135deg,#e8f1ff 0%, #d7ebff 18%, #bfe1ff 100%); border:1px solid #dbeafe;
+          box-shadow:0 10px 25px rgba(59,130,246,.18); transition:transform .15s ease, box-shadow .15s ease;}
+    .tile:hover{transform:translateY(-3px); box-shadow:0 16px 30px rgba(59,130,246,.28)}
+    .tile strong{font-size:18px}
+    .tile .badge{position:absolute;top:12px;left:12px;background:#fff;color:#1e3a8a;border:1px solid #c7d2fe;
+                 padding:6px 10px;border-radius:999px;font-weight:800;font-size:12px}
+    .tile .bubbles{position:absolute;inset:0;pointer-events:none;opacity:.5}
+    .tile .bubbles span{position:absolute;border-radius:999px;filter:blur(6px);background:#93c5fd}
+    .tile .bubbles .b1{width:80px;height:80px;right:16px;top:16px}
+    .tile .bubbles .b2{width:60px;height:60px;right:48px;bottom:18px;background:#bfdbfe}
+    @media (max-width:900px){.tiles{grid-template-columns:1fr}}
   </style>
+
 </head>
 <body>
+  
   <header>
-    <img src="assets/logo.svg" alt="Unizone logo">
-    <a href="index.html">← Back to Home</a>
+    <div class="container nav">
+      <div class="brand">
+        <img src="assets/logo.svg" alt="Unizone logo">
+        <div>
+          <strong>Unizone</strong>
+          <div style="font-size:12px;color:#6b7280">Your Smart Study Zone</div>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="bank.html">Question Bank</a></li>
+          <li><a href="exams.html">Exams</a></li>
+        </ul>
+      </nav>
+      <div class="actions">
+        <a class="btn" href="index-ar.html">العربية</a>
+        <a class="btn" href="login.html">Login</a>
+        <a class="btn btn-primary" href="login.html">Sign Up</a>
+      </div>
+    </div>
   </header>
-  <div class="container">
-    <div class="panel">
-      <div class="row">
+
+  <main class="wrap container">
+    <h1 style="margin:0 0 12px">Exams</h1>
+    <p>Select a subject tile or use the controls below.</p>
+    <div class="grid tiles" style="margin-bottom:16px">
+      <a class="tile" href="#bio" onclick="pick('bio');return false;"><span class="badge">Biochemistry</span><div class="bubbles"><span class="b1"></span><span class="b2"></span></div><strong>Start Biochemistry</strong></a>
+      <a class="tile" href="#anat" onclick="pick('anat');return false;"><span class="badge">Anatomy</span><div class="bubbles"><span class="b1"></span><span class="b2"></span></div><strong>Start Anatomy</strong></a>
+      <a class="tile" href="#pr" onclick="pick('pr');return false;"><span class="badge">PR & Media</span><div class="bubbles"><span class="b1"></span><span class="b2"></span></div><strong>Start PR & Media</strong></a>
+    </div>
+
+    <div class="panel" style="background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:16px">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
         <label>Subject:
           <select id="subject">
             <option value="bio">Biochemistry</option>
@@ -45,77 +93,56 @@
           <select id="topic"></select>
         </label>
         <label>Questions:
-          <select id="count">
-            <option>3</option><option selected>5</option><option>10</option>
-          </select>
+          <select id="count"><option>3</option><option selected>5</option><option>10</option></select>
         </label>
-        <button id="start">Start Exam</button>
+        <button id="start" class="btn btn-primary" style="border:0">Start Exam</button>
       </div>
     </div>
     <div id="quiz"></div>
     <div id="result" class="panel" style="display:none"></div>
-  </div>
+  </main>
 
   <script>
-  // --- Mini question bank ---
   const bank = {
-    bio: {
-      name: "Biochemistry",
-      topics: {
-        metabolism: [
-          {q:"Which coenzyme carries electrons in the electron transport chain?", a:["FAD","FADH2","NAD+","NADH"], correct:3},
-          {q:"Glycolysis occurs in the…", a:["Mitochondria","Cytosol","Nucleus","ER"], correct:1},
-          {q:"Rate limiting enzyme of glycolysis:", a:["PFK-1","Hexokinase","Pyruvate kinase","Aldolase"], correct:0},
-          {q:"Beta-oxidation yields units of:", a:["Glucose","Acetyl‑CoA","Lactate","Alanine"], correct:1},
-          {q:"ATP synthase is found in:", a:["Outer membrane","Inner membrane","Matrix","Cytosol"], correct:1}
-        ],
-        enzymes: [
-          {q:"Km reflects:", a:["Enzyme affinity","Max velocity","Enzyme concentration","Product level"], correct:0},
-          {q:"Competitive inhibitor effect on Km:", a:["Decrease","Increase","No change","Depends"], correct:1},
-          {q:"Vmax in competitive inhibition:", a:["Decrease","Increase","No change","Depends"], correct:2},
-          {q:"Enzymes are mostly:", a:["Lipids","Proteins","Carbs","Nucleic acids"], correct:1},
-          {q:"Allosteric enzymes show:", a:["Hyperbolic curve","Sigmoidal curve","Linear curve","No curve"], correct:1}
-        ]
-      }
-    },
-    anat: {
-      name: "Anatomy",
-      topics: {
-        bones: [
-          {q:"The femur is a type of:", a:["Flat bone","Short bone","Long bone","Irregular bone"], correct:2},
-          {q:"Which joint is the knee?", a:["Hinge","Ball and socket","Pivot","Plane"], correct:0},
-          {q:"Scapula is a:", a:["Flat bone","Long bone","Sesamoid","Short bone"], correct:0},
-          {q:"Vertebrae are:", a:["Flat","Irregular","Sesamoid","Long"], correct:1},
-          {q:"Skull sutures are:", a:["Synovial","Fibrous","Cartilaginous","None"], correct:1}
-        ],
-        nerves: [
-          {q:"Cranial nerve for vision:", a:["CN II","CN III","CN IV","CN V"], correct:0},
-          {q:"Facial expression nerve:", a:["Trigeminal","Facial","Glossopharyngeal","Accessory"], correct:1},
-          {q:"Phrenic nerve roots:", a:["C2–C3","C3–C5","C5–C7","T1–T2"], correct:1},
-          {q:"Median nerve injury affects:", a:["Wrist flexion","Ankle dorsiflexion","Knee extension","Hip abduction"], correct:0},
-          {q:"Sciatic nerve is from:", a:["Cervical plexus","Lumbar plexus","Sacral plexus","Brachial plexus"], correct:2}
-        ]
-      }
-    },
-    pr: {
-      name: "PR & Media",
-      topics: {
-        research: [
-          {q:"Random sampling improves:", a:["Validity","Reliability","Generalizability","Bias"], correct:2},
-          {q:"Qualitative method:", a:["Survey","Focus group","Experiment","Structured obs"], correct:1},
-          {q:"PR campaign starts with:", a:["Tactics","Objectives","Situation analysis","Budget"], correct:2},
-          {q:"KPI example:", a:["Press release","Media impressions","Brainstorm","Raw footage"], correct:1},
-          {q:"A/B test compares:", a:["Two random variables","Two versions","Two audiences","Two tools"], correct:1}
-        ],
-        ethics: [
-          {q:"Informed consent is required for:", a:["Internal memo","Human subjects research","Press conference","Ad spend"], correct:1},
-          {q:"Conflict of interest means:", a:["Tight deadline","Personal gain risk","Bad copy","Low CTR"], correct:1},
-          {q:"Attribution gives credit to:", a:["Team morale","Sources/creators","Budget owners","Stakeholders"], correct:1},
-          {q:"Plagiarism is:", a:["Benchmarking","Copying without credit","Sponsorship","Satire"], correct:1},
-          {q:"Sensitive data should be:", a:["Shared widely","Kept minimal & secure","Posted to socials","Ignored"], correct:1}
-        ]
-      }
-    }
+    bio: {topics:{metabolism:[
+      {q:"Which coenzyme carries electrons in the electron transport chain?", a:["FAD","FADH2","NAD+","NADH"], correct:3},
+      {q:"Glycolysis occurs in the…", a:["Mitochondria","Cytosol","Nucleus","ER"], correct:1},
+      {q:"Rate limiting enzyme of glycolysis:", a:["PFK-1","Hexokinase","Pyruvate kinase","Aldolase"], correct:0},
+      {q:"Beta-oxidation yields units of:", a:["Glucose","Acetyl-CoA","Lactate","Alanine"], correct:1},
+      {q:"ATP synthase is found in:", a:["Outer membrane","Inner membrane","Matrix","Cytosol"], correct:1}
+    ], enzymes:[
+      {q:"Km reflects:", a:["Enzyme affinity","Max velocity","Enzyme concentration","Product level"], correct:0},
+      {q:"Competitive inhibitor effect on Km:", a:["Decrease","Increase","No change","Depends"], correct:1},
+      {q:"Vmax in competitive inhibition:", a:["Decrease","Increase","No change","Depends"], correct:2},
+      {q:"Enzymes are mostly:", a:["Lipids","Proteins","Carbs","Nucleic acids"], correct:1},
+      {q:"Allosteric enzymes show:", a:["Hyperbolic","Sigmoidal","Linear","No curve"], correct:1}
+    ]}},
+    anat:{topics:{bones:[
+      {q:"The femur is a type of:", a:["Flat","Short","Long","Irregular"], correct:2},
+      {q:"Which joint is the knee?", a:["Hinge","Ball and socket","Pivot","Plane"], correct:0},
+      {q:"Scapula is a:", a:["Flat","Long","Sesamoid","Short"], correct:0},
+      {q:"Vertebrae are:", a:["Flat","Irregular","Sesamoid","Long"], correct:1},
+      {q:"Skull sutures are:", a:["Synovial","Fibrous","Cartilaginous","None"], correct:1}
+    ], nerves:[
+      {q:"Cranial nerve for vision:", a:["CN II","CN III","CN IV","CN V"], correct:0},
+      {q:"Facial expression nerve:", a:["Trigeminal","Facial","Glossopharyngeal","Accessory"], correct:1},
+      {q:"Phrenic nerve roots:", a:["C2–C3","C3–C5","C5–C7","T1–T2"], correct:1},
+      {q:"Median nerve injury affects:", a:["Wrist flexion","Ankle dorsiflexion","Knee extension","Hip abduction"], correct:0},
+      {q:"Sciatic nerve is from:", a:["Cervical","Lumbar","Sacral","Brachial"], correct:2}
+    ]}}},
+    pr:{topics:{research:[
+      {q:"Random sampling improves:", a:["Validity","Reliability","Generalizability","Bias"], correct:2},
+      {q:"Qualitative method:", a:["Survey","Focus group","Experiment","Structured obs"], correct:1},
+      {q:"PR campaign starts with:", a:["Tactics","Objectives","Situation analysis","Budget"], correct:2},
+      {q:"KPI example:", a:["Press release","Media impressions","Brainstorm","Raw footage"], correct:1},
+      {q:"A/B test compares:", a:["Two random variables","Two versions","Two audiences","Two tools"], correct:1}
+    ], ethics:[
+      {q:"Informed consent is required for:", a:["Internal memo","Human subjects research","Press conference","Ad spend"], correct:1},
+      {q:"Conflict of interest means:", a:["Tight deadline","Personal gain risk","Bad copy","Low CTR"], correct:1},
+      {q:"Attribution gives credit to:", a:["Team morale","Sources/creators","Budget owners","Stakeholders"], correct:1},
+      {q:"Plagiarism is:", a:["Benchmarking","Copying without credit","Sponsorship","Satire"], correct:1},
+      {q:"Sensitive data should be:", a:["Shared widely","Kept minimal & secure","Posted to socials","Ignored"], correct:1}
+    ]}}}
   };
 
   const subject = document.getElementById('subject');
@@ -129,42 +156,24 @@
     const t = bank[subject.value].topics;
     topic.innerHTML = Object.keys(t).map(k=>`<option value="${k}">${k}</option>`).join('');
   }
+  function pick(key){ subject.value = key; loadTopics(); window.location.hash = key; window.scrollTo({top:0}); }
   subject.addEventListener('change', loadTopics);
   loadTopics();
+  if (location.hash){ const k = location.hash.replace('#',''); if (bank[k]) pick(k); }
 
   start.addEventListener('click', ()=>{
     const data = bank[subject.value].topics[topic.value].slice();
     const n = Math.min(parseInt(count.value,10), data.length);
-    // simple shuffle
-    for (let i=data.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [data[i],data[j]]=[data[j],data[i]]; }
+    for (let i=data.length-1;i>0;i--){ const j=Math.floor(Math.random()* (i+1)); [data[i],data[j]]=[data[j],data[i]]; }
     const picked = data.slice(0,n);
-    quiz.innerHTML = '';
-    result.style.display = 'none';
-    let score = 0, answered = 0;
-
-    picked.forEach((item, idx)=>{
-      const q = document.createElement('div');
-      q.className = 'q';
-      q.innerHTML = `<strong>Q${idx+1}.</strong> ${item.q}`;
-      item.a.forEach((opt, i)=>{
-        const o = document.createElement('div');
-        o.className = 'opt';
-        o.textContent = opt;
-        o.addEventListener('click', ()=>{
-          if (o.classList.contains('correct') || o.classList.contains('wrong')) return;
-          if (i === item.correct){ o.classList.add('correct'); score++; }
-          else { o.classList.add('wrong'); }
-          answered++;
-          if (answered === picked.length){
-            result.style.display = 'block';
-            result.innerHTML = `<div class="score">Score: ${score} / ${picked.length}</div>`;
-          }
-        });
-        q.appendChild(o);
-      });
+    quiz.innerHTML = ''; result.style.display = 'none';
+    let score=0,answered=0;
+    picked.forEach((item,idx)=>{ const q=document.createElement('div'); q.className='panel'; q.innerHTML = `<strong>Q${idx+1}.</strong> ${item.q}`;
+      item.a.forEach((opt,i)=>{ const o=document.createElement('div'); o.className='btn'; o.style.margin='8px 6px 0 0'; o.textContent=opt;
+        o.addEventListener('click',()=>{ if(o.dataset.d){return} o.dataset.d=1; if(i===item.correct){o.style.background='#ecfdf5';o.style.borderColor='#10b981';score++;} else {o.style.background='#fef2f2';o.style.borderColor='#ef4444';} answered++; if(answered===picked.length){ result.style.display='block'; result.innerHTML=`<div style="font-weight:800">Score: ${score} / ${picked.length}</div>`; } }); q.appendChild(o); });
       quiz.appendChild(q);
     });
-    window.scrollTo({top: quiz.offsetTop - 20, behavior: 'smooth'});
+    window.scrollTo({top: quiz.offsetTop - 20, behavior:'smooth'});
   });
   </script>
 </body>
